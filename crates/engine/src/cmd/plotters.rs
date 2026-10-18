@@ -71,8 +71,8 @@ impl PlotterStore {
                 Some(r) if !r.is_empty() => Some(PathBuf::from(r)),
                 Some(_) => None,
                 None => match std::env::consts::OS {
-                    "macos" => get("HOME").map(|h| h.join("Library/Application Support/CADCraft")),
-                    "windows" => get("APPDATA").map(|r| r.join("CADCraft")),
+                    "macos" => get("HOME").map(|h| h.join("Library/Application Support/CADKoja")),
+                    "windows" => get("APPDATA").map(|r| r.join("CADKoja")),
                     _ => get("XDG_CONFIG_HOME").map(|r| r.join("cadcraft")).or_else(|| get("HOME").map(|h| h.join(".config/cadcraft"))),
                 },
             };
@@ -137,9 +137,9 @@ const MAX_DEVICES: usize = 1000;
 
 /// The built-in devices: name, output, description.
 const BUILTIN: [(&str, PlotOutput, &str); 3] = [
-    ("CADCraft PDF", PlotOutput::Pdf, "Vector PDF"),
-    ("CADCraft PNG", PlotOutput::Png, "Raster PNG image"),
-    ("CADCraft SVG", PlotOutput::Svg, "Vector SVG image"),
+    ("CADKoja PDF", PlotOutput::Pdf, "Vector PDF"),
+    ("CADKoja PNG", PlotOutput::Png, "Raster PNG image"),
+    ("CADKoja SVG", PlotOutput::Svg, "Vector SVG image"),
 ];
 
 /// A page setup's "no device" name.
@@ -549,7 +549,7 @@ fn run_plottermanager(_s: &mut Session, p: &Value) -> Result<Value> {
                         Some(o) => o.as_str().and_then(PlotOutput::parse).ok_or_else(|| bad(cmd, "`output` must be pdf, png or svg"))?,
                         None => PlotOutput::Pdf,
                     };
-                    let (b, o, _) = BUILTIN.iter().find(|(_, o, _)| *o == output).copied().unwrap_or(("CADCraft PDF", PlotOutput::Pdf, ""));
+                    let (b, o, _) = BUILTIN.iter().find(|(_, o, _)| *o == output).copied().unwrap_or(("CADKoja PDF", PlotOutput::Pdf, ""));
                     builtin(b, o, "")
                 }
             };
