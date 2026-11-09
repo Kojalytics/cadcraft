@@ -14,7 +14,7 @@ fn main() {
     }
     res.set("ProductName", "CADKoja")
         .set("FileDescription", "CADKoja computer-aided design")
-        .set("CompanyName", "Learning Machines LLC")
+        .set("CompanyName", "Kojalytics")
         .set("LegalCopyright", "Copyright (c) 2026 ArtCraft Team and the CADCraft contributors. MIT OR Apache-2.0.")
         .set("OriginalFilename", "cadcraft.exe")
         .set("InternalName", "cadcraft");
